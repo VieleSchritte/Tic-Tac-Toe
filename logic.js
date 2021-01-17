@@ -16,8 +16,7 @@ function startGame() {
 }
 
 // Winner check
-function counterCheck(counter) {
-  let win = false;
+function counterCheck(win, counter) {
   if (counter === 3) {
     win = true;
   }
@@ -35,28 +34,28 @@ function ifThereIsWin() {
           counter += 1;
         }
       }
-      win, counter = counterCheck(counter)
+      win, counter = counterCheck(win, counter)
 
       for (let k = 0; k < 3; k++) {
         if (playboard[k][j] === players[activePlayer]) {
           counter += 1;
         }
       }
-      win, counter = counterCheck(counter)
+      win, counter = counterCheck(win, counter)
 
       for (let k = 0; k < 3; k++) {
         if (playboard[k][k] === players[activePlayer]) {
           counter += 1;
         }
       }
-      win, counter = counterCheck(counter)
+      win, counter = counterCheck(win, counter)
 
       for (let k = 0; k < 3; k++) {
         if (playboard[k][Math.abs(k - 2)] === players[activePlayer]) {
           counter += 1;
         }
       }
-      win, counter = counterCheck(counter)
+      win, counter = counterCheck(win, counter)
     }
   }
   return win;
