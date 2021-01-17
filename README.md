@@ -1,6 +1,6 @@
-# x0_game
-I think all programmers started with this task :D
+# Tic-tac-toe
+<p>I think all programmers started with this task :D</p>
+<h3>You can try it <a href="https://vieleschritte.github.io/x0_game/">here</a></h3>
 
-<p>You know what to do;)</p>
-<p>The game is written for two players, each of which controls its number from the same device.</p>
-<p>My part was about writing logic</p>
+<h2>Description</h2>
+<p>This game is designed for two players - so you can play together with a friend. To start playing, just choose a cell and click it!</p>
