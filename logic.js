@@ -1,9 +1,18 @@
 let players = ['x', 'o'];
 let activePlayer = 0;
-let secondPlayer = 1;
+let secondPlayer = 0;
 let playboard = [];
 
-// for a start
+// Generates random choice of an active player
+function setActivePlayer(zero, one) {
+  return Math.floor(Math.random() * (one - zero + 1)) + zero;
+}
+// Generates random numbers from 0 to 2
+function setcell(zero, two) {
+  return Math.floor(Math.random() * (two - zero + 1)) + zero;
+}
+
+//Что происходит при старте
 function startGame() {
   playboard = [
     ['', '', ''],
@@ -12,9 +21,11 @@ function startGame() {
   ];
   activePlayer = 0;
   secondPlayer = 1;
+
   renderBoard(playboard);
 }
 
+// Winner check
 function ifThereIsWin(player) {
   let win = false;
   for (let i = 0; i < playboard.length; i++) {
@@ -48,13 +59,13 @@ function ifThereIsWin(player) {
   return win;
 }
 
-// What happens on click
+// Click action
 function click(row, column) {
   // Making step
   playboard[row][column] = players[activePlayer];
   renderBoard(playboard);
 
-  // Winner check
+  // Winner check in the end
   if (ifThereIsWin(players[activePlayer])) {
     showWinner(activePlayer);
   }
