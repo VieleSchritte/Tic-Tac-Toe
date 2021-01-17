@@ -21,6 +21,12 @@ function startGame() {
   ];
   activePlayer = 0;
   secondPlayer = 1;
+
+  /*если активный игрок - нолик, первый ход реализует программа*/
+  //if (activePlayer == 1) {
+  //playboard[setcell(0, 2)][setcell(0, 2)] = players[0];
+  //}
+
   renderBoard(playboard);
 }
 
@@ -72,6 +78,6 @@ function click(row, column) {
   if (ifThereIsWin(players[activePlayer])) {
     showWinner(activePlayer);
   }
-  
+
   activePlayer = 1 - activePlayer;
 }
