@@ -25,36 +25,19 @@ function counterCheck(counter) {
   return win;
 }
 
-function winSituations(playboard, coordinates, players, activePlayer, counter) {
-  let i = coordinates[0]
-  let j = coordinates[1]
-  let k = coordinates[2]
-  let winSituations = [
-      playboard[i][k] === players[activePlayer],
-      playboard[k][j] === players[activePlayer],
-      playboard[k][k] === players[activePlayer],
-      playboard[k][Math.abs(k - 2)] === players[activePlayer]
-  ]
-  for (let situation of winSituations) {
-    if (situation) {
-      counter += 1
-    }
-  }
-}
-
 function ifThereIsWin(player) {
-  let win = false;
   for (let i = 0; i < playboard.length; i++) {
     for (let j = 0; j < playboard[i].length; j++) {
+      let win = false;
       let counter = 0
       for (let k = 0; k < 3; k++) {
-        let coordinates = [i, j, k]
         if (playboard[i][k] === players[activePlayer]) {
           counter += 1;
         }
       }
       win = counterCheck(counter)
 
+      counter = 0
       for (let k = 0; k < 3; k++) {
         if (playboard[k][j] === players[activePlayer]) {
           counter += 1;
@@ -62,6 +45,7 @@ function ifThereIsWin(player) {
       }
       win = counterCheck(counter)
 
+      counter = 0
       for (let k = 0; k < 3; k++) {
         if (playboard[k][k] === players[activePlayer]) {
           counter += 1;
@@ -69,6 +53,7 @@ function ifThereIsWin(player) {
       }
       win = counterCheck(counter)
 
+      counter = 0
       for (let k = 0; k < 3; k++) {
         if (playboard[k][Math.abs(k - 2)] === players[activePlayer]) {
           counter += 1;
