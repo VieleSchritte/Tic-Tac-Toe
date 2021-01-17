@@ -16,41 +16,56 @@ function startGame() {
   renderBoard(playboard);
 }
 
-//проверка победителя
+// Winner check
 function ifThereIsWin(player) {
   let win = false;
   for (let i = 0; i < playboard.length; i++) {
     for (let j = 0; j < playboard[i].length; j++) {
-      if (
-        playboard[i][0] === players[activePlayer] &&
-        playboard[i][1] === players[activePlayer] &&
-        playboard[i][2] === players[activePlayer]) {
-          win = true;
-        } else if (
-          playboard[0][j] === players[activePlayer] &&
-          playboard[1][j] === players[activePlayer] &&
-          playboard[2][j] === players[activePlayer]
-        ) {
-          win = true;
-        } else if (
-          playboard[0][0] === players[activePlayer] &&
-          playboard[1][1] === players[activePlayer] &&
-          playboard[2][2] === players[activePlayer]
-        ) {
-          win = true;
-        } else if (
-          playboard[0][2] === players[activePlayer] &&
-          playboard[1][1] === players[activePlayer] &&
-          playboard[2][0] === players[activePlayer]
-        ) {
-          win = true;
+      let counter = 0
+      for (let k = 0; k < 3; k++) {
+        if (playboard[i][k] === players[activePlayer]) {
+          counter += 1;
         }
+      }
+      if (counter === 3) {
+        win = true;
+        counter = 0;
+      }
+
+      for (let k = 0; k < 3; k++) {
+        if (playboard[k][j] === players[activePlayer]) {
+          counter += 1;
+        }
+      }
+      if (counter === 3) {
+        win = true;
+        counter = 0;
+      }
+
+      for (let k = 0; k < 3; k++) {
+        if (playboard[k][k] === players[activePlayer]) {
+          counter += 1;
+        }
+      }
+      if (counter === 3) {
+        win = true;
+        counter = 0;
+      }
+
+      for (let k = 0; k < 3; k++) {
+        if (playboard[k][Math.abs(k - 2)]) {
+          counter += 1;
+        }
+      }
+      if (counter === 3) {
+        win = true; counter = 0;
+      }
     }
   }
   return win;
 }
 
-//Что происходит на клик
+// What happens on click
 function click(row, column) {
   // Making step
   playboard[row][column] = players[activePlayer];
