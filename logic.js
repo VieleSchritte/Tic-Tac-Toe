@@ -15,7 +15,7 @@ function startGame() {
   renderBoard(playboard);
 }
 
-function ifThereIsWin() {
+function ifThereIsWin(player) {
   //
   for (let i = 0; i < playboard.length; i++) {
     for (let j = 0; j < playboard[i].length; j++) {
@@ -35,7 +35,7 @@ function click(row, column) {
   renderBoard(playboard);
 
   // Winner check
-  if (ifThereIsWin()) {
+  if (ifThereIsWin(players[activePlayer])) {
     showWinner(activePlayer);
   }
   
