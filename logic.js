@@ -9,17 +9,38 @@ function startGame() {
     ['', '', ''],
     ['', '', '']
   ];
+  activePlayer = 0;
   renderBoard(playboard);
 }
 
 function ifThereIsWin(player) {
-  //
+  let win = false;
   for (let i = 0; i < playboard.length; i++) {
     for (let j = 0; j < playboard[i].length; j++) {
-      let win = false;
-      if (playboard[i][j] === players[activePlayer]) {
-        win = true;
-      }
+      if (
+        playboard[i][0] === players[activePlayer] &&
+        playboard[i][1] === players[activePlayer] &&
+        playboard[i][2] === players[activePlayer]) {
+          win = true;
+        } else if (
+          playboard[0][j] === players[activePlayer] &&
+          playboard[1][j] === players[activePlayer] &&
+          playboard[2][j] === players[activePlayer]
+        ) {
+          win = true;
+        } else if (
+          playboard[0][0] === players[activePlayer] &&
+          playboard[1][1] === players[activePlayer] &&
+          playboard[2][2] === players[activePlayer]
+        ) {
+          win = true;
+        } else if (
+          playboard[0][2] === players[activePlayer] &&
+          playboard[1][1] === players[activePlayer] &&
+          playboard[2][0] === players[activePlayer]
+        ) {
+          win = true;
+        }
     }
   }
   return win;
