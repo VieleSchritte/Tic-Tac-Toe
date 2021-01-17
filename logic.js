@@ -13,6 +13,21 @@ function setcell(zero, two) {
 }
 
 //Что происходит при старте
+let players = ['x', 'o'];
+let activePlayer = 0;
+let secondPlayer = 0;
+let playboard = [];
+
+//Функция генерит случайный выбор активного игрока
+function setActivePlayer(zero, one) {
+  return Math.floor(Math.random() * (one - zero + 1)) + zero;
+}
+/*Функция генерит случайные числа от 0 до 2 - на случай, если активный игрок - нолик, и первый ход - за программой, которой надо сделать выбор на ячейке*/
+function setcell(zero, two) {
+  return Math.floor(Math.random() * (two - zero + 1)) + zero;
+}
+
+//Что происходит при старте
 function startGame() {
   playboard = [
     ['', '', ''],
@@ -22,10 +37,15 @@ function startGame() {
   activePlayer = 0;
   secondPlayer = 1;
 
+  /*если активный игрок - нолик, первый ход реализует программа*/
+  //if (activePlayer == 1) {
+  //playboard[setcell(0, 2)][setcell(0, 2)] = players[0];
+  //}
+
   renderBoard(playboard);
 }
 
-// Winner check
+//проверка победителя
 function ifThereIsWin(player) {
   let win = false;
   for (let i = 0; i < playboard.length; i++) {
@@ -59,13 +79,17 @@ function ifThereIsWin(player) {
   return win;
 }
 
-// Click action
+//Что происходит на клик
 function click(row, column) {
-  // Making step
+  //ход
   playboard[row][column] = players[activePlayer];
   renderBoard(playboard);
 
-  // Winner check in the end
+  /*while (ifThereIsWin(activePlayer) == false || ifThereIsWin(players[1 - activePlayer] == false)) {
+    continue;
+  }*/
+
+  //проверка победителя
   if (ifThereIsWin(players[activePlayer])) {
     showWinner(activePlayer);
   }
