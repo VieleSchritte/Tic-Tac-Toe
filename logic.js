@@ -1,5 +1,6 @@
 let players = ['x', 'o'];
 let activePlayer = 0;
+let secondPlayer = 1;
 let playboard = [];
 
 // for a start
@@ -10,6 +11,7 @@ function startGame() {
     ['', '', '']
   ];
   activePlayer = 0;
+  secondPlayer = 1;
   renderBoard(playboard);
 }
 
