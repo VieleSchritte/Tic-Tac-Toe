@@ -3,21 +3,6 @@ let activePlayer = 0;
 let secondPlayer = 0;
 let playboard = [];
 
-// Generates random choice of an active player
-function setActivePlayer(zero, one) {
-  return Math.floor(Math.random() * (one - zero + 1)) + zero;
-}
-// Generates random numbers from 0 to 2
-function setcell(zero, two) {
-  return Math.floor(Math.random() * (two - zero + 1)) + zero;
-}
-
-//Что происходит при старте
-let players = ['x', 'o'];
-let activePlayer = 0;
-let secondPlayer = 0;
-let playboard = [];
-
 //Функция генерит случайный выбор активного игрока
 function setActivePlayer(zero, one) {
   return Math.floor(Math.random() * (one - zero + 1)) + zero;
@@ -36,12 +21,6 @@ function startGame() {
   ];
   activePlayer = 0;
   secondPlayer = 1;
-
-  /*если активный игрок - нолик, первый ход реализует программа*/
-  //if (activePlayer == 1) {
-  //playboard[setcell(0, 2)][setcell(0, 2)] = players[0];
-  //}
-
   renderBoard(playboard);
 }
 
