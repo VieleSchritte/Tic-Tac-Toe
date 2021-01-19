@@ -22,8 +22,8 @@ boardEl.addEventListener('click', function (event) {
 });
 
 function showWinner(winner) {
-  let header = modalEl.getElementsByTagName('h2')[0];
-  header.textContent = `🍾 Победил игрок №${winner + 1}! 🍾`;
+  let header = modalEl.querySelectorAll("h2");
+  header.textContent = `🍾 player #${winner + 1} has won! 🍾`;
   modalEl.classList.remove('hidden');
 }
 
