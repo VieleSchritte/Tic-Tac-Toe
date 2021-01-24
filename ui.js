@@ -3,6 +3,17 @@ window.addEventListener('load', startGame);
 let boardEl = document.getElementById('board');
 let modalEl = document.getElementById('modal');
 let resetButtons = document.getElementsByClassName('reset');
+// let dimensions = [3, 4, 5];
+
+/* function setDimension(dimensions) {
+  let dimsBlock = document.getElementById('dimensions');
+  let dimsList = [];
+  for (let dimension of dimensions) {
+    dimsList.push(
+        <div class="${dimension}"></div>
+    )
+  }
+} */
 
 for (let btn of resetButtons) {
   btn.addEventListener('click', function () {
@@ -22,7 +33,8 @@ boardEl.addEventListener('click', function (event) {
 });
 
 function showWinner(winner) {
-  let header = modalEl.querySelectorAll("h2");
+  console.log(winner)
+  let header = modalEl.querySelector("h2");
   header.textContent = `🍾 player #${winner + 1} has won! 🍾`;
   modalEl.classList.remove('hidden');
 }

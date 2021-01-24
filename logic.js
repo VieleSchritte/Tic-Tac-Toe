@@ -3,7 +3,6 @@ let activePlayer = 0;
 let secondPlayer = 0;
 let playboard = [];
 
-// What happens on start
 function startGame() {
   playboard = [
     ['', '', ''],
@@ -15,37 +14,27 @@ function startGame() {
   renderBoard(playboard);
 }
 
-function isWinCase(i) {
-  let winCases = [
-    playboard[i][0] === players[activePlayer] &&
-    playboard[i][1] === players[activePlayer] &&
-    playboard[i][2] === players[activePlayer],
-
-    playboard[0][i] === players[activePlayer] &&
-    playboard[1][i] === players[activePlayer] &&
-    playboard[2][i] === players[activePlayer],
-
-    playboard[0][0] === players[activePlayer] &&
-    playboard[1][1] === players[activePlayer] &&
-    playboard[2][2] === players[activePlayer],
-
-    playboard[0][2] === players[activePlayer] &&
-    playboard[1][1] === players[activePlayer] &&
-    playboard[2][0] === players[activePlayer]
-  ];
-
-  for (let i = 0; i < winCases.length; i++) {
-    if (winCases[i]) {
-      return true;
-    }
-  }
-}
-
 // Winner check
 function isWin() {
   let win = false;
-  for (let i = 0; i < 3; i++) {
-    if (isWinCase(i)) {
+  let counters = [0, 0, 0, 0]
+  for (let i = 0; i < playboard.length; i++) {
+    for (let j = 0; j < playboard.length; j++) {
+      let cases = [
+          playboard[i][j] === players[activePlayer],
+          playboard[j][i] === players[activePlayer],
+          playboard[j][j] === players[activePlayer],
+          playboard[j][Math.abs(j - 2)] === players[activePlayer]
+      ]
+      for (let k = 0; k < cases.length; k++) {
+        if (cases[k]) {
+          counters[k]++;
+        }
+      }
+    }
+  }
+  for (let counter of counters) {
+    if (counter === 3) {
       win = true;
     }
   }
